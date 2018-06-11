@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Implements hook_help().
+ *
+ * Displays help and module information.
+ *
+ * @param path
+ *   Which path of the site we're using to display help
+ * @param arg
+ *   Array that holds the current path as returned from arg() function
+ */
+function custom_module_help($path, $arg) {
+	switch ($path) {
+		case "help.page.custom_module":
+			return '' . t("Hello, This is my Help Page") . '';
+			break;
+	}
+}
+
+/**
+  * Implements hook__page_attachments()
+  */
+
+function custom_module_page_attachments(array &$attachments) {
+	// get current route
+	$route = \Drupal::routeMatch()->getRouteName();
+	// check route set in custom_module.routing.yml file
+	if ( $route == 'custom_module.content') {
+		$attachments['#attached']['library'][] = 'custom_module/global-styling';
+		$attachments['#attached']['library'][] = 'custom_module/global-scripts';
+	}
+}

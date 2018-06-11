@@ -1,0 +1,12 @@
+name: SITE Custom Module
+description: Starter custom module for SITE
+package: Custom
+
+type: module
+core: 8.x
+
+configure: custom_module.settings
+
+libraries:
+  - custom_module/global-styling
+  - custom_module/global-scripts
